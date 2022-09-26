@@ -3,10 +3,12 @@ FROM centos:7
 # Install FTS
 RUN yum install -y epel-release.noarch
 RUN curl https://fts-repo.web.cern.ch/fts-repo/fts3-prod-el7.repo > /etc/yum.repos.d/fts3-prod-el7.repo
+RUN curl https://repository.egi.eu/sw/production/cas/1/current/repo-files/EGI-trustanchors.repo > /etc/yum.repos.d/EGI-trustanchors.repo
 RUN curl https://dmc-repo.web.cern.ch/dmc-repo/dmc-el7.repo > /etc/yum.repos.d/dmc-el7.repo
 RUN yum upgrade -y && \
     yum install -y centos-release-scl
-RUN yum install -y mysql multitail gfal2-plugin* fts-server fts-client fts-rest-server fts-monitoring fts-mysql fts-msg python2-pip
+RUN yum install -y mysql multitail gfal2-* fts-server fts-client fts-rest-server fts-monitoring fts-mysql fts-msg python2-pip ca-policy-egi-core
+RUN yum install -y strace less jq
 RUN yum clean all
 
 # Setup FTS security
