@@ -18,3 +18,5 @@ cp /opt/rh/httpd24/root/etc/httpd/conf.modules.d/10-rh-python36-wsgi.conf /etc/h
 /usr/sbin/fts_msg_bulk             # daemon to send messages to activemq
 /usr/sbin/fts_bringonline          # daemon to handle staging requests
 /usr/sbin/httpd -DFOREGROUND       # FTS REST frontend & FTSMON
+
+find /var/log/ | xargs tail -n 40

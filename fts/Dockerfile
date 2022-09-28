@@ -8,14 +8,14 @@ RUN curl https://dmc-repo.web.cern.ch/dmc-repo/dmc-el7.repo > /etc/yum.repos.d/d
 RUN yum upgrade -y && \
     yum install -y centos-release-scl
 RUN yum install -y mysql multitail gfal2-* fts-server fts-client fts-rest-server fts-monitoring fts-mysql fts-msg python2-pip ca-policy-egi-core
-RUN yum install -y strace less jq
+RUN yum install -y strace less jq openssl-perl
 RUN yum clean all
 
-# Setup FTS security
-COPY certs/hostcert_fts.pem /etc/grid-security/hostcert.pem
-COPY certs/hostcert_fts.key.pem /etc/grid-security/hostkey.pem
-COPY certs/rucio_ca.pem /etc/grid-security/certificates/5fca1cb1.0
-RUN chmod 400 /etc/grid-security/hostkey.pem
+# # Setup FTS security
+# COPY certs/hostcert_fts.pem /etc/grid-security/hostcert.pem
+# COPY certs/hostcert_fts.key.pem /etc/grid-security/hostkey.pem
+# COPY certs/rucio_ca.pem /etc/grid-security/certificates/5fca1cb1.0
+# RUN chmod 400 /etc/grid-security/hostkey.pem
 
 # Upgrade to high-enough version of sqlalchemy for python2
 RUN pip install --upgrade pip==20.3.4

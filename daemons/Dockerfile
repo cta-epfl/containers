@@ -56,4 +56,7 @@ RUN mkdir /var/log/rucio
 VOLUME /var/log/rucio
 VOLUME /opt/rucio/etc
 
+# quick patches, TO REMOVE!
+ADD patches/rucio/lib/rucio/common/constants.py /usr/local/lib/python3.6/site-packages/rucio/common/constants.py
+
 ENTRYPOINT ["/start-daemon.sh"]
